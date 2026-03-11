@@ -1,0 +1,24 @@
+version: 1
+last_updated: 2026-03-11
+agents:
+  - id: coding-agent
+    role: Primary implementation agent for Project Arcus
+    entrypoint: agents/coding_agent_contract.md
+    required_reads:
+      - docs/project_context.md
+      - docs/guardrails.md
+      - agents/coding_agent_contract.md
+      - workflows/development_workflow.md
+    writes_to:
+      - docs/
+      - agents/
+      - workflows/
+      - schemas/
+      - context/
+      - adapters/
+      - prompts/
+      - tests/
+      - examples/
+    blocked_paths:
+      - legacy/poc/
+    notes: Must not modify archived assets unless the task explicitly authorizes legacy changes.
