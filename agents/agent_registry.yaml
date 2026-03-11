@@ -1,16 +1,29 @@
 version: 1
 last_updated: 2026-03-11
+operating_model:
+  current_phase: Phase 0
+  truth_hierarchy:
+    - docs/
+    - schemas/
+    - agents/
+    - workflows/
+  frozen_paths:
+    - legacy/poc/
+  legacy_context_policy: explicit-opt-in-only
 agents:
   - id: coding-agent
-    role: Primary implementation agent for Project Arcus
+    role: Primary implementation agent for Project Arcus repo operating system
     entrypoint: agents/coding_agent_contract.md
     required_reads:
+      - README.md
       - docs/project_context.md
       - docs/guardrails.md
       - agents/coding_agent_contract.md
       - agents/agent_registry.yaml
       - workflows/development_workflow.md
       - docs/roadmap/phase_plan.md
+      - docs/decisions/
+      - schemas/
     writes_to:
       - docs/
       - agents/
@@ -21,6 +34,7 @@ agents:
       - prompts/
       - tests/
       - examples/
+      - .github/
     blocked_paths:
       - legacy/poc/
-    notes: Must not read or modify archived legacy assets unless the task explicitly authorizes legacy context or legacy changes.
+    notes: Active work must stay outside legacy/. Use legacy/poc only when a task explicitly authorizes legacy context or legacy edits.

@@ -4,11 +4,25 @@
   "title": "Project Arcus Manifest",
   "type": "object",
   "additionalProperties": false,
-  "required": ["manifest_version", "name", "kind", "owners", "artifacts"],
+  "required": [
+    "manifest_version",
+    "id",
+    "name",
+    "kind",
+    "status",
+    "owners",
+    "artifacts"
+  ],
   "properties": {
     "manifest_version": {
       "type": "string",
-      "description": "Schema version for the manifest document."
+      "description": "Schema version for the manifest document.",
+      "pattern": "^v?[0-9]+(\\.[0-9]+)*$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "description": "Stable identifier for the tracked artifact set or run."
     },
     "name": {
       "type": "string",
@@ -16,10 +30,29 @@
     },
     "kind": {
       "type": "string",
-      "enum": ["workflow", "adapter", "context", "example", "prompt-pack"]
+      "enum": [
+        "workflow",
+        "adapter",
+        "context",
+        "example",
+        "prompt-pack",
+        "artifact-set",
+        "run"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "archived", "superseded"]
+    },
+    "phase": {
+      "type": "string"
     },
     "summary": {
       "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
     },
     "owners": {
       "type": "array",
@@ -43,13 +76,23 @@
           },
           "role": {
             "type": "string",
-            "enum": ["input", "output", "reference", "template"]
+            "enum": ["input", "output", "reference", "template", "log", "report"]
+          },
+          "description": {
+            "type": "string"
           },
           "required": {
             "type": "boolean",
             "default": true
           }
         }
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
       }
     },
     "notes": {
