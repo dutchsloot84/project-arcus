@@ -1,1 +1,12 @@
+# Default owner
 * @dutchsloot84
+
+# Protect the operating-system boundary files
+/.github/CODEOWNERS @dutchsloot84
+/docs/ @dutchsloot84
+/schemas/ @dutchsloot84
+/agents/ @dutchsloot84
+/workflows/ @dutchsloot84
+
+# Archived legacy proof of concept
+/legacy/poc/ @dutchsloot84

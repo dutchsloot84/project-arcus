@@ -11,9 +11,9 @@
 - [x] Tighten `docs/guardrails.md` for contract-first, schema-first, no-drift, and legacy-freeze rules.
 - [x] Tighten `agents/coding_agent_contract.md` with required reads, allowed actions, forbidden actions, and validation expectations.
 - [x] Tighten `workflows/development_workflow.md` so each step names the artifacts it must update.
-- [ ] Confirm `agents/agent_registry.yaml` and `schemas/manifest.schema.json` remain valid after Phase 0 tightening.
-- [ ] Record any material operating-model clarification in an ADR.
-- [ ] Confirm no edits land under `legacy/poc/` as part of Phase 0.
+- [x] Confirm `agents/agent_registry.yaml` and `schemas/manifest.schema.json` remain valid after Phase 0 tightening.
+- [x] Record any material operating-model clarification in an ADR.
+- [x] Confirm no edits land under `legacy/poc/` as part of Phase 0.
 
 ### Definition Of Done
 
