@@ -1,18 +1,42 @@
-# Contributor Quickstart (Demo-Safe)
+# Contributing To Project Arcus
 
-This proof of concept favors minimal, deterministic changes over sweeping refactors. Use the patterns below to keep the demo stable and governed.
+Project Arcus uses the repository root as its operating system. Contributions should strengthen the contracts, workflows, schemas, and documented context that guide future implementation.
 
-## How to add a field
-- Update the relevant Pydantic model (e.g., `src/enterprise_synthetic_data_hub/models/person.py` or `.../vehicle.py`) with the new attribute and validation defaults.
-- Thread the field through the generator: extend the source lists/constants and setters in `src/enterprise_synthetic_data_hub/generation/generator.py`.
-- Adjust schema tests (`tests/test_schema_person.py`, `tests/test_schema_vehicle.py`) and any smoke contract tests that assert payload shapes.
+## Before You Change Anything
 
-## How to add a rule
-- Append a new rule builder in `src/enterprise_synthetic_data_hub/generation/rules_person.py` or `.../rules_vehicle.py` that returns a descriptive string (used by `/healthz`).
-- Apply the rule inside `generator.py` where the entity is constructed; keep random choices seeded via the local `rng` instance to preserve determinism.
-- Add a focused test in `tests/generation/` or `tests/api/` that asserts the rule’s outcome without increasing record counts or runtime.
+1. Read `docs/project_context.md`.
+2. Read `docs/guardrails.md`.
+3. Read `agents/coding_agent_contract.md`.
+4. Read `workflows/development_workflow.md`.
+5. Review relevant ADRs in `docs/decisions/`.
 
-## How to add a new entity (pattern only)
-- Mirror the existing structure: create a Pydantic model under `src/enterprise_synthetic_data_hub/models/`, a rules module under `generation/`, and extend `generation/generator.py` with seeded builders plus metadata counts.
-- Extend API wiring in `src/enterprise_synthetic_data_hub/api/app.py` following the `/generate/<entity>` pattern, plus a smoke test in `tests/smoke/`.
-- Keep the scope demo-sized (do not add auth, scaling, or AI-driven logic) and update sample artifacts under `data/demo_samples/` only if the payload contract changes.
+## Default Contribution Pattern
+
+1. Plan the change.
+2. Update contracts or schemas first when the change affects structure or policy.
+3. Implement the smallest coherent slice.
+4. Verify the change locally.
+5. Record the decision in an ADR when the change is durable.
+6. Update manifests, examples, and docs before closing the work.
+
+## Legacy Boundary
+
+- `legacy/poc/` is archived.
+- Do not modify `legacy/poc/` unless the task explicitly calls for a legacy change.
+- If you need something from the POC in active work, migrate it intentionally and document the decision.
+
+## Commit Expectations
+
+- Keep commits small and reviewable.
+- Separate file moves from policy or content changes when possible.
+- Prefer explicit commit messages that describe the repo-level effect.
+
+## Validation Expectations
+
+- Validate YAML and JSON after editing them.
+- Check for stale links or outdated path references after moves.
+- Run the smallest relevant verification step that proves the change is coherent.
+
+## Ownership
+
+See `.github/CODEOWNERS` for the default review owner.
