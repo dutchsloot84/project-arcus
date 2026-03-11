@@ -9,8 +9,8 @@
 - [x] Lock the new foundation with a same-day baseline tag on the default branch.
 - [x] Tighten `docs/project_context.md` for Phase 0 scope, non-goals, and truth hierarchy.
 - [x] Tighten `docs/guardrails.md` for contract-first, schema-first, no-drift, and legacy-freeze rules.
-- [ ] Tighten `agents/coding_agent_contract.md` with required reads, allowed actions, forbidden actions, and validation expectations.
-- [ ] Tighten `workflows/development_workflow.md` so each step names the artifacts it must update.
+- [x] Tighten `agents/coding_agent_contract.md` with required reads, allowed actions, forbidden actions, and validation expectations.
+- [x] Tighten `workflows/development_workflow.md` so each step names the artifacts it must update.
 - [ ] Confirm `agents/agent_registry.yaml` and `schemas/manifest.schema.json` remain valid after Phase 0 tightening.
 - [ ] Record any material operating-model clarification in an ADR.
 - [ ] Confirm no edits land under `legacy/poc/` as part of Phase 0.

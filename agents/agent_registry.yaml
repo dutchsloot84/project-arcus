@@ -8,7 +8,9 @@ agents:
       - docs/project_context.md
       - docs/guardrails.md
       - agents/coding_agent_contract.md
+      - agents/agent_registry.yaml
       - workflows/development_workflow.md
+      - docs/roadmap/phase_plan.md
     writes_to:
       - docs/
       - agents/
@@ -21,4 +23,4 @@ agents:
       - examples/
     blocked_paths:
       - legacy/poc/
-    notes: Must not modify archived assets unless the task explicitly authorizes legacy changes.
+    notes: Must not read or modify archived legacy assets unless the task explicitly authorizes legacy context or legacy changes.

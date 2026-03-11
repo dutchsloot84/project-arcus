@@ -2,30 +2,46 @@
 
 ## Default Flow
 
-1. Plan the change.
-2. Implement the smallest coherent slice.
-3. Verify behavior and path correctness.
-4. Record or update an ADR when the change introduces a durable decision.
-5. Update manifests, schemas, and related docs before closing the work.
+1. Plan
+2. Implement
+3. Verify
+4. Record ADR
+5. Update manifests and companion docs
 
-## Planning Expectations
+## 1. Plan
 
-- Confirm the relevant contracts, schemas, and guardrails before editing.
-- Break structural changes apart from content or behavior changes when possible.
-- Prefer explicit move lists and before/after state summaries for large restructures.
+- Read `docs/project_context.md`, `docs/guardrails.md`, `agents/coding_agent_contract.md`, `agents/agent_registry.yaml`, and `docs/roadmap/phase_plan.md`.
+- Confirm which root-level artifacts are in scope before editing.
+- Identify whether the change affects policy, workflow, schema, manifests, or agent behavior.
+- Split the work into small, reviewable commits when possible.
 
-## Verification Expectations
+## 2. Implement
 
-- Validate structured files such as YAML and JSON.
-- Check links and references after directory or file moves.
-- Use repo-level tests or examples when they exist; add them when a new pattern needs proof.
+- Update the governing contract or policy file first when behavior or boundaries are changing.
+- Touch the smallest coherent slice of files needed for the planned outcome.
+- Keep active work at the repository root unless the task explicitly targets `legacy/poc/`.
+- Typical implementation files:
+  - `docs/project_context.md`
+  - `docs/guardrails.md`
+  - `agents/coding_agent_contract.md`
+  - `agents/agent_registry.yaml`
+  - `workflows/development_workflow.md`
+  - `schemas/manifest.schema.json`
 
-## Decision Recording
+## 3. Verify
 
-- Use `docs/decisions/` for durable project decisions.
-- Keep ADRs short, factual, and tied to a concrete repo change.
+- Check link and relative path correctness for edited docs and README references.
+- Validate structured artifacts such as `agents/agent_registry.yaml` and `schemas/manifest.schema.json`.
+- Confirm no unintended files changed, especially under `legacy/poc/`.
+- Run the smallest relevant verification step that proves the repo remains coherent.
 
-## Manifest Maintenance
+## 4. Record ADR
 
-- Add or update manifests when introducing new workflows, adapters, or examples.
-- Keep schemas aligned with the manifests they govern.
+- When the change introduces a durable operating-model decision, add or update an ADR under `docs/decisions/`.
+- ADRs should explain what changed, why it changed, and the constraints that now apply.
+
+## 5. Update Manifests And Companion Docs
+
+- Update manifests or schemas when new workflows, adapters, examples, or structured contracts are introduced or changed.
+- Update companion docs when workflow or policy changes would otherwise create drift.
+- Before closing the work, make sure docs, schemas, agents, and workflows still agree on the operating model.
