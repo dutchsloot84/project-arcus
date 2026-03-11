@@ -4,11 +4,13 @@ Project Arcus uses the repository root as its operating system. Contributions sh
 
 ## Before You Change Anything
 
-1. Read `docs/project_context.md`.
-2. Read `docs/guardrails.md`.
-3. Read `agents/coding_agent_contract.md`.
-4. Read `workflows/development_workflow.md`.
-5. Review relevant ADRs in `docs/decisions/`.
+1. Read [README.md](README.md).
+2. Read [docs/project_context.md](docs/project_context.md).
+3. Read [docs/guardrails.md](docs/guardrails.md).
+4. Read [agents/coding_agent_contract.md](agents/coding_agent_contract.md).
+5. Read [agents/agent_registry.yaml](agents/agent_registry.yaml).
+6. Read [workflows/development_workflow.md](workflows/development_workflow.md).
+7. Review [docs/roadmap/phase_plan.md](docs/roadmap/phase_plan.md), relevant ADRs in [docs/decisions/](docs/decisions/), and relevant files in [schemas/](schemas/).
 
 ## Default Contribution Pattern
 
@@ -23,7 +25,9 @@ Project Arcus uses the repository root as its operating system. Contributions sh
 
 - `legacy/poc/` is archived.
 - Do not modify `legacy/poc/` unless the task explicitly calls for a legacy change.
+- Do not use `legacy/poc/` as default context for active work.
 - If you need something from the POC in active work, migrate it intentionally and document the decision.
+- Keep new active work outside `legacy/`.
 
 ## Commit Expectations
 
@@ -39,4 +43,4 @@ Project Arcus uses the repository root as its operating system. Contributions sh
 
 ## Ownership
 
-See `.github/CODEOWNERS` for the default review owner.
+See [`.github/CODEOWNERS`](.github/CODEOWNERS) for the default review owner and [docs/sops/github_branch_protection_checklist.md](docs/sops/github_branch_protection_checklist.md) for the manual GitHub settings that should reinforce the repo operating model.
