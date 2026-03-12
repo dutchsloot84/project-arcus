@@ -30,16 +30,14 @@ agents:
       - agents/
       - workflows/
       - schemas/
-      - orchestration/
-      - providers/
-      - observability/
+      - src/
       - context/
       - adapters/
       - prompts/
+      - scenario_packs/
       - tests/
       - examples/
       - .github/
     blocked_paths:
       - legacy/poc/
     notes: Active work must stay outside legacy/. Use legacy/poc only when a task explicitly authorizes legacy context or legacy edits.
-

@@ -29,12 +29,11 @@ Do not read or use `legacy/poc/` as context unless a task explicitly directs you
 - [agents/](agents/) - agent registry and coding contract
 - [workflows/](workflows/) - how work moves from plan to verified change
 - [schemas/](schemas/) - JSON schemas for repo manifests and structured contracts
-- [orchestration/](orchestration/) - planner contracts, policy gate scaffolding, and ScenarioSpec validation
-- [providers/](providers/) - provider abstraction for mock, local, and future Bedrock planners
-- [observability/](observability/) - audit, trace, and cost-tracking interfaces for orchestration
+- [src/enterprise_synthetic_data_hub/](src/enterprise_synthetic_data_hub/) - active orchestration, provider, and observability scaffolding
 - [context/](context/) - ingested operational context and domain reference material
 - [adapters/](adapters/) - integration-specific implementation slots
-- [prompts/](prompts/) - active prompt assets for the repo OS
+- [prompts/](prompts/) - Markdown prompt assets for planning and validation workflows
+- [scenario_packs/](scenario_packs/) - curated YAML scenario definitions that remain usable without an LLM
 - [tests/](tests/) - root-level repo OS checks and examples of expected behavior
 - [examples/](examples/) - sample manifests, prompts, and workflow artifacts
 - `legacy/poc/` - archived Enterprise Synthetic Data Hub POC
@@ -55,4 +54,3 @@ The original proof of concept has been quarantined under `legacy/poc/` so it rem
 ## Contribution Flow
 
 Use [workflows/development_workflow.md](workflows/development_workflow.md) as the default path for planning, implementation, verification, ADR updates, and manifest maintenance. If a change affects agent behavior, also update the agent contract and registry.
-

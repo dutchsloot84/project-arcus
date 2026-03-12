@@ -4,15 +4,15 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 
 ## Phase 1 - Architecture Freeze
 
-- [ ] Confirm architecture rules are consistent across ADRs, guardrails, and AI context
-- [ ] Publish migration plan, execution checklist, and open questions tracker
-- [ ] Lock `ScenarioSpec` as Pydantic, prompts as Markdown, and scenario packs as YAML
+- [x] Confirm architecture rules are consistent across ADRs, guardrails, and AI context
+- [x] Publish migration plan, execution checklist, and open questions tracker
+- [x] Lock `ScenarioSpec` as Pydantic, prompts as Markdown, and scenario packs as YAML
 
 ## Phase 2 - Repo Scaffolding
 
-- [ ] Create active orchestration, provider, prompt, and scenario-pack paths
-- [ ] Add minimal placeholders or examples for each new path
-- [ ] Verify scaffolding does not weaken current generator boundaries
+- [x] Create active orchestration, provider, prompt, and scenario-pack paths
+- [x] Add minimal placeholders or examples for each new path
+- [x] Verify scaffolding does not weaken current generator boundaries
 
 ## Phase 3 - ScenarioSpec Contract
 
