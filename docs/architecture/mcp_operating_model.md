@@ -69,6 +69,9 @@ Arcus distinguishes three MCP access modes:
 | Repo operations | Support constrained reads, diffs, and eventually validated updates to approved paths | No broad unvalidated writes; legacy archives remain frozen |
 | Future integrations | Add permissioned interfaces for Confluence, Jira, GitHub, Postgres, and similar systems | External integrations are deferred until scope, validation, and audit expectations are explicit |
 
+The initial read-only capability contracts now live in [mcp_read_capabilities.md](mcp_read_capabilities.md) so future MCP tooling can start from portable, least-privilege interfaces instead of environment-specific assumptions.
+
 ## Phase 0 Position
 
 In Phase 0 and early Phase 1, MCP is a governance and operating-model decision, not an implementation rollout. Arcus is defining the control plane first so later MCP tools can be introduced with clear trust boundaries, change control, and approval expectations.
+
