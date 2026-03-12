@@ -20,18 +20,21 @@ The existing Arcus baseline remains non-negotiable:
 Arcus will pivot the active architecture to a provider-agnostic orchestration model with a strict planner-to-generator boundary.
 
 - Planner providers produce `ScenarioSpec` proposals only.
+- `ScenarioSpec` remains a clean, provider-agnostic planning contract and excludes runtime cost, token usage, latency, retries, and related execution metadata.
 - A policy gate evaluates planner output before any generator execution is allowed.
+- Policy gates may enforce configured budget thresholds, but budget and cost are not embedded into `ScenarioSpec`.
 - The deterministic generator remains the sole writer of final synthetic records and their `synthetic_source` markers.
 - Provider integration will follow a shared abstraction that reserves support for `mock`, `local`, and `bedrock`.
 - Bedrock runtime calls are explicitly deferred in this slice; only the abstraction and placeholders land now.
-- Observability hooks for audit, trace, and cost accounting are part of the orchestration contract from the start.
+- Observability hooks and provider execution records own audit, trace, cost, token, latency, and retry capture after execution.
 
 ## Consequences
 
 - Arcus can evolve planner providers without allowing provider-specific runtime behavior to bypass governance.
 - The architecture preserves deterministic replay guarantees by keeping scenario proposal separate from record generation.
+- Swapping mock, local, and Bedrock providers does not require changing the `ScenarioSpec` contract.
 - Future Bedrock or local-provider work must implement the shared provider contract and pass through the same policy gate.
-- Observability expectations become an interface requirement instead of an afterthought.
+- Observability expectations become an interface requirement instead of an afterthought, including post-execution runtime metadata capture.
 
 ## Alternatives Considered
 

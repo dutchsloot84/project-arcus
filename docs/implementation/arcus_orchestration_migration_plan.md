@@ -12,11 +12,12 @@ Lock the orchestration direction, repo invariants, and tracking artifacts before
 
 - Accepted architecture decision and companion tracking artifacts
 - Durable AI guardrails for orchestration work
-- Phase plan aligned to `ScenarioSpec` with Pydantic, prompts in Markdown, and scenario packs in YAML
+- Phase plan aligned to a provider-agnostic `ScenarioSpec` Pydantic contract, prompts in Markdown, and scenario packs in YAML
 
 ### Exit Criteria
 
 - Architecture rules are explicit and consistent across the repo
+- `ScenarioSpec` is documented as planning-only and runtime cost metadata is assigned to observability
 - Tracking artifacts exist for migration planning, execution, and open questions
 - Future implementation work has a clear read path and source of truth
 
@@ -52,18 +53,20 @@ Create the active directory and module layout for orchestration, providers, prom
 
 ### Objective
 
-Define the canonical planner output contract as a Pydantic-validated `ScenarioSpec`.
+Define the canonical planner output contract as a clean, provider-agnostic, Pydantic-validated `ScenarioSpec`.
 
 ### Key Deliverables
 
 - `ScenarioSpec` model and validation rules
 - Schema versioning approach for the contract
+- Contract boundary stating that runtime cost, token usage, latency, retries, and similar execution metadata are out of scope
 - Examples and tests for valid and invalid planner output
 
 ### Exit Criteria
 
 - Planner output cannot proceed without successful Pydantic validation
 - Contract ownership is clearly code-first, not prompt-first
+- `ScenarioSpec` excludes budget, cost, and other runtime observability metadata
 - Versioned examples exist for replay and regression checks
 
 ### Risks / Dependencies
@@ -81,12 +84,14 @@ Insert a deterministic policy evaluation step between planner output and generat
 
 - Policy gate interface and enforcement flow
 - Rejection reasons and audit-friendly decision records
+- Configured budget-threshold checks that operate outside `ScenarioSpec`
 - Tests covering allow, reject, and malformed planner output paths
 
 ### Exit Criteria
 
 - Generator execution is blocked unless planner output passes policy evaluation
 - Policy outcomes are logged for audit and lineage review
+- Budget enforcement is configuration-driven and not embedded into planner contract fields
 - Failure modes are explicit and deterministic
 
 ### Risks / Dependencies
@@ -104,7 +109,7 @@ Stand up the end-to-end orchestration path using a mock planner provider and the
 
 - Shared provider interface exercised by a mock implementation
 - Planner -> validation -> policy -> generator handoff flow
-- Audit, lineage, and cost-tracking hooks stubbed through the pipeline
+- Audit, lineage, and post-execution observability hooks stubbed through the pipeline
 
 ### Exit Criteria
 
@@ -127,13 +132,13 @@ Add a Bedrock-backed planner provider behind the shared provider abstraction wit
 
 - Bedrock provider adapter and configuration surface
 - Runtime behavior expectations for retries, errors, and response parsing
-- Provider-specific audit and cost instrumentation
+- Provider-specific observability records for cost, token usage, latency, and retries
 
 ### Exit Criteria
 
 - Bedrock planner output still resolves to validated `ScenarioSpec` objects only
 - Policy gate enforcement is unchanged for Bedrock calls
-- Cost and runtime metadata are captured alongside execution records
+- Cost and runtime metadata are captured post-execution alongside provider execution records
 
 ### Risks / Dependencies
 
@@ -172,7 +177,7 @@ Strengthen the orchestration stack for repeatable delivery, governance, and long
 ### Key Deliverables
 
 - Golden tests, replay checks, and manifest coverage for orchestration paths
-- Stronger audit, lineage, and cost-reporting support
+- Stronger audit, lineage, and runtime metadata reporting support
 - Operational runbooks or SOP updates for future contributors
 
 ### Exit Criteria

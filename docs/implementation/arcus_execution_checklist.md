@@ -6,7 +6,8 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 
 - [x] Confirm architecture rules are consistent across ADRs, guardrails, and AI context
 - [x] Publish migration plan, execution checklist, and open questions tracker
-- [x] Lock `ScenarioSpec` as Pydantic, prompts as Markdown, and scenario packs as YAML
+- [x] Lock `ScenarioSpec` as a provider-agnostic Pydantic planning contract, prompts as Markdown, and scenario packs as YAML
+- [x] Document that runtime cost, token usage, latency, retries, and related execution metadata belong to observability and provider execution records
 
 ## Phase 2 - Repo Scaffolding
 
@@ -17,6 +18,7 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 ## Phase 3 - ScenarioSpec Contract
 
 - [ ] Define the Pydantic `ScenarioSpec` model
+- [ ] Confirm `ScenarioSpec` excludes budget, cost, and other runtime observability fields
 - [ ] Add validation tests for accepted and rejected planner output
 - [ ] Decide and document schema versioning for `ScenarioSpec`
 
@@ -24,6 +26,7 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 
 - [ ] Add a policy gate interface between planner output and generator execution
 - [ ] Define rejection reasons and audit logging expectations
+- [ ] Define configured budget-threshold checks outside `ScenarioSpec`
 - [ ] Add tests for allow, reject, and malformed-input flows
 
 ## Phase 5 - Mock Orchestration Pipeline
@@ -35,7 +38,7 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 ## Phase 6 - Bedrock Provider Integration
 
 - [ ] Add the Bedrock provider adapter behind the shared provider interface
-- [ ] Capture cost, audit, and runtime metadata for Bedrock planner calls
+- [ ] Capture post-execution cost, token, latency, retry, and audit metadata for Bedrock planner calls
 - [ ] Validate Bedrock output still flows through `ScenarioSpec` validation and the policy gate
 
 ## Phase 7 - Prompt Governance And Scenario Packs
@@ -47,5 +50,5 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 ## Phase 8 - Operational Hardening
 
 - [ ] Add golden tests and replay checks for orchestration flows
-- [ ] Strengthen lineage and cost-reporting coverage
+- [ ] Strengthen lineage and runtime metadata reporting coverage
 - [ ] Update runbooks, SOPs, or companion docs needed for sustained maintenance
