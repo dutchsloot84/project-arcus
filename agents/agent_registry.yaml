@@ -16,6 +16,7 @@ agents:
     entrypoint: agents/coding_agent_contract.md
     required_reads:
       - README.md
+      - AI_CONTEXT.md
       - docs/project_context.md
       - docs/guardrails.md
       - agents/coding_agent_contract.md
@@ -41,3 +42,4 @@ agents:
     blocked_paths:
       - legacy/poc/
     notes: Active work must stay outside legacy/. Use legacy/poc only when a task explicitly authorizes legacy context or legacy edits.
+

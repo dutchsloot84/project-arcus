@@ -22,14 +22,15 @@
 Read in this order before making changes:
 
 1. [README.md](../README.md)
-2. [docs/project_context.md](project_context.md)
-3. [docs/guardrails.md](guardrails.md)
-4. [agents/coding_agent_contract.md](../agents/coding_agent_contract.md)
-5. [agents/agent_registry.yaml](../agents/agent_registry.yaml)
-6. [workflows/development_workflow.md](../workflows/development_workflow.md)
-7. [docs/roadmap/phase_plan.md](roadmap/phase_plan.md)
-8. relevant ADRs under [docs/decisions/](decisions/)
-9. relevant schemas under [schemas/](../schemas/)
+2. [AI_CONTEXT.md](../AI_CONTEXT.md)
+3. [docs/project_context.md](project_context.md)
+4. [docs/guardrails.md](guardrails.md)
+5. [agents/coding_agent_contract.md](../agents/coding_agent_contract.md)
+6. [agents/agent_registry.yaml](../agents/agent_registry.yaml)
+7. [workflows/development_workflow.md](../workflows/development_workflow.md)
+8. [docs/roadmap/phase_plan.md](roadmap/phase_plan.md)
+9. relevant ADRs under [docs/decisions/](decisions/)
+10. relevant schemas under [schemas/](../schemas/)
 
 `legacy/poc/` is excluded from the default read path and may only be consulted when a task explicitly asks for legacy context.
 
@@ -87,3 +88,4 @@ When files disagree, apply this truth hierarchy until the repo is reconciled:
 - No autonomous or runtime schema mutation is allowed in the pilot baseline.
 - Governance exists to preserve auditability, bounded scope, and exact replay rather than maximize scenario volume.
 - `legacy/poc/` remains denied by default for agent mutation paths.
+

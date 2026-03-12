@@ -9,14 +9,15 @@ The coding agent must plan before implementing. Do not start significant impleme
 Before changing files, read in this order:
 
 1. [README.md](../README.md)
-2. [docs/project_context.md](../docs/project_context.md)
-3. [docs/guardrails.md](../docs/guardrails.md)
-4. [agents/coding_agent_contract.md](coding_agent_contract.md)
-5. [agents/agent_registry.yaml](agent_registry.yaml)
-6. [workflows/development_workflow.md](../workflows/development_workflow.md)
-7. [docs/roadmap/phase_plan.md](../docs/roadmap/phase_plan.md)
-8. relevant ADRs under [docs/decisions/](../docs/decisions/)
-9. relevant schemas under [schemas/](../schemas/)
+2. [AI_CONTEXT.md](../AI_CONTEXT.md)
+3. [docs/project_context.md](../docs/project_context.md)
+4. [docs/guardrails.md](../docs/guardrails.md)
+5. [agents/coding_agent_contract.md](coding_agent_contract.md)
+6. [agents/agent_registry.yaml](agent_registry.yaml)
+7. [workflows/development_workflow.md](../workflows/development_workflow.md)
+8. [docs/roadmap/phase_plan.md](../docs/roadmap/phase_plan.md)
+9. relevant ADRs under [docs/decisions/](../docs/decisions/)
+10. relevant schemas under [schemas/](../schemas/)
 
 `legacy/poc/` is excluded from required reads unless a task explicitly requests legacy context.
 
@@ -80,3 +81,4 @@ When making a durable repo change, update the smallest relevant set of companion
 - Confirm no files under `legacy/poc/` were modified unless explicitly requested.
 - Run the smallest relevant checks that prove the change is coherent.
 - Leave the worktree clean, or clearly explain any intentionally preserved local state.
+
