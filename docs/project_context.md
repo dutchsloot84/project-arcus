@@ -33,6 +33,9 @@ This page distills the Phase 0 architecture ingestion artifact at [context/confl
 ## Key Invariants
 
 - The canonical synthetic model is not directly editable by QA, RapidBotz, CI/CD, or environment-specific workflows.
+- Planner providers and LLM-backed components may only emit structured `ScenarioSpec` proposals, never final synthetic records.
+- The deterministic generator remains the only component allowed to create final synthetic records and apply `synthetic_source` governance markers.
+- Planner output must pass a policy gate before generator execution begins.
 - Generation is allowed only inside a controlled execution boundary and must remain non-production in scope.
 - Reproducibility requires a fixed seed, fixed logic state, fixed schema or canonical version, and logged manifests.
 - Dataset variations must be seed-derived; manual post-generation edits are not part of the pilot model.
@@ -57,4 +60,5 @@ See [docs/architecture/architecture_at_a_glance.md](architecture/architecture_at
 - Repo artifacts remain the active source of truth for Arcus policy, contracts, and architecture.
 - Confluence remains an ingestion source, not an active authority.
 - MCP is part of the planned Arcus control plane for safe agent interaction, but implementation is deferred until its contracts, trust boundaries, and change control are defined.
-- See [docs/architecture/mcp_operating_model.md](architecture/mcp_operating_model.md), [docs/architecture/mcp_capability_roadmap.md](architecture/mcp_capability_roadmap.md), and [docs/decisions/ADR-0004-mcp-as-control-plane.md](decisions/ADR-0004-mcp-as-control-plane.md) for the current governance model.
+- Provider-agnostic orchestration uses planners that propose `ScenarioSpec` objects, then pass through a policy gate before deterministic generation.
+- See [docs/architecture/mcp_operating_model.md](architecture/mcp_operating_model.md), [docs/architecture/mcp_capability_roadmap.md](architecture/mcp_capability_roadmap.md), [docs/decisions/ADR-0004-mcp-as-control-plane.md](decisions/ADR-0004-mcp-as-control-plane.md), and [docs/decisions/ADR-0004-provider-agnostic-orchestration-pivot.md](decisions/ADR-0004-provider-agnostic-orchestration-pivot.md) for the current governance model.

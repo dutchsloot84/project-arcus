@@ -12,6 +12,9 @@
 - Active-work boundary: new active work must happen outside `legacy/`.
 - Permissioned mutation rule: mutation paths should be scoped, permissioned, and validated.
 - No broad-write rule: do not give agents broad unvalidated write access.
+- ScenarioSpec-only planner rule: planner providers and LLM-backed steps may only propose structured `ScenarioSpec` objects.
+- Generator ownership rule: the deterministic generator remains the only component allowed to create final synthetic records or assign `synthetic_source`.
+- Policy gate rule: planner output must clear a policy gate before generator execution can proceed.
 - ADR rule: an ADR under `docs/decisions/` is required for material decisions that change repo policy, workflow, or operating boundaries.
 
 ## Context Hierarchy / Required Reads
@@ -70,6 +73,7 @@ When files disagree, apply this truth hierarchy until the repo is reconciled:
 ## Canonical Drift Prevention Rules
 
 - Scenario contracts must stay versioned and validated before generation.
+- Provider-backed planning must stay behind shared provider abstractions and observable policy enforcement.
 - Validation failure moves a scenario out of active use until drift is resolved.
 - Deprecated or retired scenarios must not silently return to active use.
 - Canonical growth is intentionally constrained during Phase 0 to prevent uncontrolled expansion.

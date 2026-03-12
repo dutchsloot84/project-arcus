@@ -30,7 +30,7 @@ Interpret repo truth in this precedence order:
 ## Allowed Actions
 
 - Read the required project context before editing.
-- Update root-level docs, schemas, workflows, examples, tests, prompts, adapters, and context assets when they are in scope.
+- Update root-level docs, schemas, workflows, orchestration, providers, observability, examples, tests, prompts, adapters, and context assets when they are in scope.
 - Add active work only outside `legacy/`.
 - Make the smallest coherent set of changes needed to satisfy the approved plan.
 - Keep commits small, reviewable, and clearly scoped.
