@@ -16,3 +16,4 @@ data/demo_runs/*
 certs
 certs/csaa_netskope_combined.pem
 certs/*.crt
+/.codex-worktrees/
