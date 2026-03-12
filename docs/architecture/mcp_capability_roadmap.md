@@ -12,8 +12,11 @@ This roadmap gives a phased view of MCP adoption in Arcus. It is intentionally n
 ## Phase 1: Read-Only Context Tools
 
 - expose narrow MCP capabilities for source-of-truth discovery and scoped context retrieval
+- define portable read-only capability contracts for repo discovery, repo context retrieval, and GitHub inspection
 - enforce least-privilege reads and minimal context loading
 - keep archived, sensitive, and external resources unavailable unless explicitly approved
+
+See [mcp_read_capabilities.md](mcp_read_capabilities.md) for the initial read-layer capability definitions.
 
 ## Phase 2: Validated Mutation Tools
 
@@ -26,3 +29,4 @@ This roadmap gives a phased view of MCP adoption in Arcus. It is intentionally n
 - introduce tightly scoped execution capabilities for approved workflows
 - add enterprise integrations such as Confluence, Jira, GitHub, or Postgres only behind explicit contracts and approvals
 - preserve human approval for higher-severity or operationally sensitive actions
+

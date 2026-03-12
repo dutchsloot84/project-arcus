@@ -31,7 +31,7 @@ Interpret repo truth in this precedence order:
 ## Allowed Actions
 
 - Read the required project context before editing.
-- Update root-level docs, schemas, workflows, orchestration, providers, observability, examples, tests, prompts, adapters, and context assets when they are in scope.
+- Update root-level docs, schemas, workflows, `src/` packages, examples, tests, prompts, scenario packs, adapters, and context assets when they are in scope.
 - Add active work only outside `legacy/`.
 - Make the smallest coherent set of changes needed to satisfy the approved plan.
 - Keep commits small, reviewable, and clearly scoped.
@@ -81,4 +81,3 @@ When making a durable repo change, update the smallest relevant set of companion
 - Confirm no files under `legacy/poc/` were modified unless explicitly requested.
 - Run the smallest relevant checks that prove the change is coherent.
 - Leave the worktree clean, or clearly explain any intentionally preserved local state.
-
