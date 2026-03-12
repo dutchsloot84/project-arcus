@@ -51,3 +51,10 @@ The Phase 0 architecture uses a six-layer Test Intelligence stack with Synthetic
 - Layer 6: Release governance and risk visibility use reproducible evidence from the lower layers.
 
 See [docs/architecture/architecture_at_a_glance.md](architecture/architecture_at_a_glance.md) for the layer map and [docs/architecture/trust_boundaries.md](architecture/trust_boundaries.md) for control-plane, usage-plane, and mutation boundaries.
+
+## Agent Control Plane
+
+- Repo artifacts remain the active source of truth for Arcus policy, contracts, and architecture.
+- Confluence remains an ingestion source, not an active authority.
+- MCP is part of the planned Arcus control plane for safe agent interaction, but implementation is deferred until its contracts, trust boundaries, and change control are defined.
+- See [docs/architecture/mcp_operating_model.md](architecture/mcp_operating_model.md), [docs/architecture/mcp_capability_roadmap.md](architecture/mcp_capability_roadmap.md), and [docs/decisions/ADR-0004-mcp-as-control-plane.md](decisions/ADR-0004-mcp-as-control-plane.md) for the current governance model.

@@ -6,9 +6,12 @@
 - Contract-first: define or update the governing contract before implementation changes land.
 - Schema-first: if a change alters a structured artifact, update its schema before or with the producer and consumer changes.
 - No drift: root docs, contracts, schemas, workflows, and ADRs are the source of truth for active work and must stay aligned.
+- Policy-in-interface rule: enforce policy through permissioned interfaces and tools, not prompts alone.
 - Legacy freeze rule: do not edit anything under `legacy/poc/` unless explicitly requested.
 - Legacy context rule: do not use `legacy/poc/` as context unless a task explicitly directs legacy context gathering.
 - Active-work boundary: new active work must happen outside `legacy/`.
+- Permissioned mutation rule: mutation paths should be scoped, permissioned, and validated.
+- No broad-write rule: do not give agents broad unvalidated write access.
 - ADR rule: an ADR under `docs/decisions/` is required for material decisions that change repo policy, workflow, or operating boundaries.
 
 ## Context Hierarchy / Required Reads
@@ -46,6 +49,7 @@ When files disagree, apply this truth hierarchy until the repo is reconciled:
 - Prefer small, reviewable commits that separate policy, workflow, and optional hygiene changes.
 - Validate local assumptions before asking other agents or contributors to act.
 - Update affected contracts, workflows, manifests, and ADRs in the same workstream when the change is durable.
+- When an approved MCP path exists, prefer it over broad raw access.
 
 ## Canonical Data Mutation Policy
 
@@ -78,3 +82,4 @@ When files disagree, apply this truth hierarchy until the repo is reconciled:
 - Canonical ownership, adapter ownership, application ownership, QA ownership, and DevOps ownership remain distinct.
 - No autonomous or runtime schema mutation is allowed in the pilot baseline.
 - Governance exists to preserve auditability, bounded scope, and exact replay rather than maximize scenario volume.
+- `legacy/poc/` remains denied by default for agent mutation paths.
