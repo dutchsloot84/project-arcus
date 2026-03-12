@@ -1,9 +1,20 @@
-"""Code-owned orchestration schemas will live here, including the future Pydantic ScenarioSpec."""
+"""Code-owned orchestration schemas for planner-to-generator contract boundaries."""
 
 from __future__ import annotations
 
-from typing import Any, Mapping
+from .scenario_spec import (
+    ALLOWED_SEED_STRATEGIES,
+    CURRENT_SCHEMA_VERSION,
+    ScenarioSpec,
+    ScenarioSpecPayload,
+)
+from .validators import ScenarioSpecValidationError, validate_scenario_spec
 
-ScenarioSpecPayload = Mapping[str, Any]
-
-__all__ = ["ScenarioSpecPayload"]
+__all__ = [
+    "ALLOWED_SEED_STRATEGIES",
+    "CURRENT_SCHEMA_VERSION",
+    "ScenarioSpec",
+    "ScenarioSpecPayload",
+    "ScenarioSpecValidationError",
+    "validate_scenario_spec",
+]

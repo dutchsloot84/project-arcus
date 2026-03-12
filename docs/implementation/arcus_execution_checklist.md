@@ -17,10 +17,10 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 
 ## Phase 3 - ScenarioSpec Contract
 
-- [ ] Define the Pydantic `ScenarioSpec` model
-- [ ] Confirm `ScenarioSpec` excludes budget, cost, and other runtime observability fields
-- [ ] Add validation tests for accepted and rejected planner output
-- [ ] Decide and document schema versioning for `ScenarioSpec`
+- [x] Define the Pydantic `ScenarioSpec` model
+- [x] Confirm `ScenarioSpec` excludes budget, cost, and other runtime observability fields
+- [x] Add validation tests for accepted and rejected planner output
+- [x] Decide and document schema versioning for `ScenarioSpec`
 
 ## Phase 4 - Policy Gate
 
