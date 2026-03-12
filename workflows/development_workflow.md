@@ -24,7 +24,7 @@ Where updates go:
 - [docs/roadmap/phase_plan.md](../docs/roadmap/phase_plan.md) if roadmap status or blockers change
 
 Execution notes:
-- Read [README.md](../README.md), [docs/project_context.md](../docs/project_context.md), [docs/guardrails.md](../docs/guardrails.md), [agents/coding_agent_contract.md](../agents/coding_agent_contract.md), [agents/agent_registry.yaml](../agents/agent_registry.yaml), [workflows/development_workflow.md](development_workflow.md), [docs/roadmap/phase_plan.md](../docs/roadmap/phase_plan.md), relevant ADRs, and relevant schemas.
+- Read [README.md](../README.md), [AI_CONTEXT.md](../AI_CONTEXT.md), [docs/project_context.md](../docs/project_context.md), [docs/guardrails.md](../docs/guardrails.md), [agents/coding_agent_contract.md](../agents/coding_agent_contract.md), [agents/agent_registry.yaml](../agents/agent_registry.yaml), [workflows/development_workflow.md](development_workflow.md), [docs/roadmap/phase_plan.md](../docs/roadmap/phase_plan.md), relevant ADRs, and relevant schemas.
 - Exclude `legacy/poc/` from planning context unless the task explicitly targets legacy work.
 - Split the work into small, reviewable commits when possible.
 
@@ -106,3 +106,4 @@ Execution notes:
 - Update manifests or schemas when new workflows, adapters, examples, or structured contracts are introduced or changed.
 - Update companion docs when workflow or policy changes would otherwise create drift.
 - Before closing the work, make sure docs, schemas, agents, and workflows still agree on the operating model.
+
