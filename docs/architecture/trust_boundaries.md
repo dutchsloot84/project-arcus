@@ -7,6 +7,8 @@ This page distills the Phase 0 architecture ingestion artifact at [context/confl
 | Boundary | What Is Inside | What Is Outside | Phase 0 Effect |
 | --- | --- | --- | --- |
 | Execution boundary | AWS IAM-governed generator execution | Broad DevOps or general user access | Only approved generator identities may run canonical generation flows. |
+| Planning boundary | Planner providers, prompt assets, and `ScenarioSpec` proposals | Final record creation and manifest authorship | Planner components may suggest scenarios but cannot emit final synthetic records. |
+| Policy boundary | Policy-gate validation between planning and generation | Direct planner-to-generator execution | Every planner proposal must be validated before generation proceeds. |
 | Control plane boundary | Canonical model, registry metadata, audit logging, manifest references | QA, RapidBotz, CI/CD consumers | Consumers can request datasets but cannot directly mutate canonical definitions. |
 | Adapter boundary | Adapter validation and normalization into the canonical contract | Tool-specific request shapes and automation logic | RapidBotz submits requests through an adapter instead of embedding scenario rules or transformations. |
 | Environment boundary | Non-production synthetic artifacts and test runs | Production systems and production data stores | The pilot has zero production write paths and a non-production-only blast radius. |
@@ -27,6 +29,7 @@ Scenario activation requires identifiable ownership. If business or technical ow
 ## Mutation Permissions For Canonical Data
 
 - Canonical model changes require formal review by the platform owner and the change review group.
+- Planner providers may propose `ScenarioSpec` payloads only and may not create final records or assign `synthetic_source`.
 - QA, RapidBotz, CI/CD, and environment-specific workflows may request datasets but may not directly edit canonical definitions.
 - Environment-specific overrides are not permitted in the canonical model.
 - Dataset variations must be seed-derived rather than manually altered after generation.

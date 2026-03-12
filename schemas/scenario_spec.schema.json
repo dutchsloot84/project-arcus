@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ScenarioSpec",
+  "description": "Placeholder contract for planner-proposed scenarios. Providers may propose ScenarioSpec objects only; final synthetic records remain generator-owned.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scenario_id",
+    "seed",
+    "record_count",
+    "provider"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "mock",
+        "local",
+        "bedrock"
+      ]
+    },
+    "prompt_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parameters": {
+      "type": "object"
+    }
+  }
+}

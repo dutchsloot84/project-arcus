@@ -28,6 +28,9 @@ Do not read or use `legacy/poc/` as context unless a task explicitly directs you
 - [agents/](agents/) - agent registry and coding contract
 - [workflows/](workflows/) - how work moves from plan to verified change
 - [schemas/](schemas/) - JSON schemas for repo manifests and structured contracts
+- [orchestration/](orchestration/) - planner contracts, policy gate scaffolding, and ScenarioSpec validation
+- [providers/](providers/) - provider abstraction for mock, local, and future Bedrock planners
+- [observability/](observability/) - audit, trace, and cost-tracking interfaces for orchestration
 - [context/](context/) - ingested operational context and domain reference material
 - [adapters/](adapters/) - integration-specific implementation slots
 - [prompts/](prompts/) - active prompt assets for the repo OS
