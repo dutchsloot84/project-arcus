@@ -26,7 +26,7 @@ This file is the parking lot for unresolved design decisions that should be answ
 
 ## Schema Versioning
 
-- How will `ScenarioSpec` versions be named, stored, and validated across examples, tests, prompts, and scenario packs?
+- Resolved: `ScenarioSpec` starts at schema version `1.0`, and the active code-owned model plus companion JSON schema validate only that version today.
 - What compatibility promise applies when a scenario pack references an older schema version?
 - When should version changes require an ADR versus a smaller contract update?
 

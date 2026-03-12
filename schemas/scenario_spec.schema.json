@@ -1,41 +1,97 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-arcus.local/schemas/scenario_spec.schema.json",
   "title": "ScenarioSpec",
-  "description": "Placeholder contract for planner-proposed scenarios. Providers may propose ScenarioSpec objects only; final synthetic records remain generator-owned.",
+  "description": "Versioned planner-to-policy/generator contract boundary for provider-agnostic ScenarioSpec proposals. Final synthetic records remain generator-owned.",
   "type": "object",
   "additionalProperties": false,
   "required": [
+    "schema_version",
     "scenario_id",
-    "seed",
-    "record_count",
-    "provider"
+    "scenario_name",
+    "requested_entities",
+    "record_targets",
+    "constraints",
+    "seed_strategy",
+    "planner_metadata"
   ],
   "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
     "scenario_id": {
       "type": "string",
       "minLength": 1
     },
-    "seed": {
-      "type": "integer"
-    },
-    "record_count": {
-      "type": "integer",
-      "minimum": 1
-    },
-    "provider": {
-      "type": "string",
-      "enum": [
-        "mock",
-        "local",
-        "bedrock"
-      ]
-    },
-    "prompt_version": {
+    "scenario_name": {
       "type": "string",
       "minLength": 1
     },
-    "parameters": {
-      "type": "object"
+    "requested_entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "record_targets": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      }
+    },
+    "seed_strategy": {
+      "type": "string",
+      "enum": [
+        "explicit",
+        "randomized"
+      ]
+    },
+    "seed": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "planner_metadata": {
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "seed_strategy": {
+            "const": "explicit"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "seed"
+        ],
+        "properties": {
+          "seed": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  ]
 }
