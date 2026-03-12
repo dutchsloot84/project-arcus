@@ -1,60 +1,53 @@
 # Project Context
 
-## Mission
+This page distills the Phase 0 architecture ingestion artifact at [context/confluence_ingestion/20260311_arcus_phase0_architecture_first_pass.md](../context/confluence_ingestion/20260311_arcus_phase0_architecture_first_pass.md). Items labeled `Inferred` are synthesis carried forward from that artifact and are not direct source statements.
 
-Project Arcus turns this repository into a dependable operating system for human and AI-assisted delivery. The repo root is the active control plane for mission, policy, workflow, schemas, and decisions so contributors can make changes with a shared contract, predictable review boundaries, and a clean separation from archived proof-of-concept history.
+## Mission / Purpose
 
-## Current Phase
+- Establish a governed, deterministic, and auditable way to generate synthetic test data scenarios for QA, automation, performance testing, and future AI-driven testing across Guidewire applications.
+- Reduce release triage noise by removing non-reproducible failures caused by environment data drift.
+- Provide a synthetic data foundation for the broader Test Intelligence stack.
 
-Phase 0: Repo OS Is Real
+`Inferred`: Arcus treats test data as governed infrastructure so reproducibility and auditability are built into delivery rather than added after failures occur.
 
-## Why Phase 0 Exists
+## Pilot Scope
 
-Phase 0 exists to remove ambiguity after the repo reset. The project needs a stable operating model before it grows new implementation: contributors should know what to read first, where project truth lives, which files are authoritative, and which areas are intentionally frozen. Phase 0 makes that operating model explicit inside the repo so active work does not depend on memory, chat context, or legacy implementation shortcuts.
+- Business lane: Commercial Auto new business in PolicyCenter.
+- Consumer path: one consuming application path centered on RapidBotz plus the Guidewire integration path.
+- Scenario volume: 1-3 foundational Tier 1 scenarios.
+- Environments: 1-2 lower environments such as Dev2 and QA.
+- Data guarantees: deterministic seed-based generation, manifest audit logging, and golden snapshot reproducibility.
+- Explicit limits: no endorsements, renewals, fleet scenarios, or multi-vehicle expansion during Phase 0.
 
-## Scope For Phase 0
+`Inferred`: Phase 0 is intentionally a single-lane, low-scenario pilot that proves governance and reproducibility before any broader expansion.
 
-- Confirm the repo root is the canonical active workspace for all new work.
-- Keep the new baseline legible and traceable on `main`.
-- Preserve `legacy/poc/` as archived, frozen material outside the default context window.
-- Make the required read order explicit for coding agents and human contributors.
-- Keep [docs/guardrails.md](guardrails.md), [agents/coding_agent_contract.md](../agents/coding_agent_contract.md), and [workflows/development_workflow.md](../workflows/development_workflow.md) aligned.
-- Make the truth hierarchy between [docs/](./), [schemas/](../schemas/), [agents/](../agents/), and [workflows/](../workflows/) explicit.
-- Maintain a minimal, practical schema for project manifests and run artifacts.
-- Capture material operating-model decisions in ADRs under [docs/decisions/](decisions/).
-- Maintain a visible Phase 0 checklist and definition of done in [docs/roadmap/phase_plan.md](roadmap/phase_plan.md).
-- Provide manual repo-setting guidance when enforcement depends on GitHub UI or repository settings.
+## Explicit Non-Goals
 
-## Non-Goals
+- Using masked production data or introducing production write paths.
+- Treating the platform as an uncontrolled AI-generated data system.
+- Replacing application business logic validation or unit tests.
+- Owning application rating logic or other Guidewire business rules.
+- Expanding to ClaimCenter, BillingCenter, or multi-application hydration in Phase 0.
+- Introducing enterprise marketplace features, large scenario-library growth, or autonomous schema mutation during the pilot.
 
-- Building new product features or adapters beyond placeholder scaffolding.
-- Migrating archived POC code into active root-level implementation.
-- Expanding `legacy/poc/` behavior, tests, or documentation.
-- Designing full CI/CD or release automation beyond baseline guidance.
-- Replacing governance docs with informal notes or chat-only decisions.
-- Inventing a large multi-agent ecosystem before the repo operating model requires it.
+## Key Invariants
 
-## Trust Boundaries And Invariants
+- The canonical synthetic model is not directly editable by QA, RapidBotz, CI/CD, or environment-specific workflows.
+- Generation is allowed only inside a controlled execution boundary and must remain non-production in scope.
+- Reproducibility requires a fixed seed, fixed logic state, fixed schema or canonical version, and logged manifests.
+- Dataset variations must be seed-derived; manual post-generation edits are not part of the pilot model.
+- Scope expansion triggers formal review rather than informal consumer-driven changes.
 
-- The active source of truth lives at the repository root, not in `legacy/poc/`.
-- `legacy/poc/` is archived and frozen unless a task explicitly says otherwise.
-- Durable operating decisions require an ADR under `docs/decisions/`.
-- Contracts and schemas must lead implementation when behavior or structure changes.
-- New active work must happen outside `legacy/`.
-- External sources may inform the repo, but they do not override in-repo contracts once recorded.
-- If documents disagree, follow the truth hierarchy until the conflict is resolved in-repo.
+## Architecture Layers
 
-## Where The Truth Lives
+The Phase 0 architecture uses a six-layer Test Intelligence stack with Synthetic Data Hub as the foundation:
 
-Read and interpret active guidance in this precedence order:
+- Foundation: Synthetic Data Hub provides the canonical model, generation engine, manifests, registry metadata, and audit controls.
+- Layer 1: Unit testing consumes deterministic fixtures and scenario outputs.
+- Layer 2: DevOps CI/CD coordinates repeatable execution paths that request governed datasets.
+- Layer 3: Performance tooling consumes deterministic datasets for non-production test runs.
+- Layer 4: RapidBotz and API automation request and use datasets through adapter boundaries.
+- Layer 5: DIRR and AI test intelligence analyze results using traceable synthetic data inputs.
+- Layer 6: Release governance and risk visibility use reproducible evidence from the lower layers.
 
-1. [docs/](./) for mission, policy, roadmap, SOPs, and ADRs
-2. [schemas/](../schemas/) for structured contract definitions
-3. [agents/](../agents/) for agent operating expectations and registry metadata
-4. [workflows/](../workflows/) for the default delivery sequence and update locations
-
-Supporting materials such as `examples/`, `context/`, `adapters/`, `prompts/`, and `tests/` must align to that hierarchy and not silently redefine it.
-
-## Operational Source Of Truth Note
-
-Confluence and other external systems may seed context, but repository artifacts are the operational source of truth once the information is captured here. If an external source conflicts with the repo, reconcile the repo through a documented change rather than treating the external source as an override.
+See [docs/architecture/architecture_at_a_glance.md](architecture/architecture_at_a_glance.md) for the layer map and [docs/architecture/trust_boundaries.md](architecture/trust_boundaries.md) for control-plane, usage-plane, and mutation boundaries.
