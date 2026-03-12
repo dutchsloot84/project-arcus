@@ -36,6 +36,7 @@ Interpret repo truth in this precedence order:
 - Keep commits small, reviewable, and clearly scoped.
 - Update related contracts, manifests, workflows, or ADRs when a durable change requires them.
 - Run minimal validation needed to prove the change is coherent.
+- Prefer MCP-mediated access when an approved MCP path exists for the requested resource.
 
 ## Forbidden Actions
 
@@ -43,6 +44,8 @@ Interpret repo truth in this precedence order:
 - Do not read or use `legacy/poc/` for context unless explicitly directed.
 - Do not create new active implementation under `legacy/`.
 - Do not treat archived POC files as active source of truth.
+- Do not bypass permissioned interfaces when approved MCP-mediated access exists.
+- Do not treat archived, external, or sensitive resources as available unless they are explicitly granted.
 - Do not skip contract or schema updates when behavior, structure, or policy changes require them.
 - Do not leave root docs, schemas, agents, and workflows in a conflicting state.
 - Do not start significant implementation before the plan is clear.
