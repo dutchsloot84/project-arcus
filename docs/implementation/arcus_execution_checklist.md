@@ -25,9 +25,9 @@ Use this tracker to mark orchestration-pivot work as it lands. Keep checklist up
 ## Phase 4 - Policy Gate
 
 - [x] Add a policy gate interface between planner output and generator execution
-- [ ] Define rejection reasons and audit logging expectations
-- [ ] Define configured budget-threshold checks outside `ScenarioSpec`
-- [ ] Add tests for allow, reject, and malformed-input flows
+- [x] Define rejection reasons and audit logging expectations
+- [x] Define configured budget-threshold checks outside `ScenarioSpec`
+- [x] Add tests for allow, reject, and malformed-input flows
 
 ## Phase 5 - Mock Orchestration Pipeline
 

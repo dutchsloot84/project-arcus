@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from datetime import datetime, timezone
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+from enterprise_synthetic_data_hub.orchestration.policy.policy_config import POLICY_VERSION
 
 
 class PolicyViolation(BaseModel):
@@ -12,10 +15,26 @@ class PolicyViolation(BaseModel):
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
-    code: str
-    path: str
+    rule_id: str
     message: str
-    value: Any = None
+    path: str | None = None
+    severity: Literal["error", "warning"]
+    blocking: bool
+
+
+class PolicyAuditRecord(BaseModel):
+    """Audit-friendly record describing a completed policy evaluation."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    scenario_id: str
+    schema_version: str
+    decision: Literal["allow", "deny"]
+    violations: tuple[PolicyViolation, ...] = Field(default_factory=tuple)
+    policy_version: str = POLICY_VERSION
+    evaluated_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc)
+    )
 
 
 class PolicyDecision(BaseModel):
