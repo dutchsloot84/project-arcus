@@ -2,10 +2,11 @@
 
 ## Core Rules
 
+- Planning control-plane rule: `planning/` task YAML is authoritative for work state, and `planning/project_status.md` is generated only.
 - Plan first: do not implement significant work before the plan, scope, and update targets are clear.
 - Contract-first: define or update the governing contract before implementation changes land.
 - Schema-first: if a change alters a structured artifact, update its schema before or with the producer and consumer changes.
-- No drift: root docs, contracts, schemas, workflows, and ADRs are the source of truth for active work and must stay aligned.
+- No drift: root docs, planning files, contracts, schemas, workflows, and ADRs are the source of truth for active work and must stay aligned.
 - Policy-in-interface rule: enforce policy through permissioned interfaces and tools, not prompts alone.
 - Legacy freeze rule: do not edit anything under `legacy/poc/` unless explicitly requested.
 - Legacy context rule: do not use `legacy/poc/` as context unless a task explicitly directs legacy context gathering.
@@ -22,28 +23,31 @@
 Read in this order before making changes:
 
 1. [README.md](../README.md)
-2. [AI_CONTEXT.md](../AI_CONTEXT.md)
-3. [docs/project_context.md](project_context.md)
-4. [docs/guardrails.md](guardrails.md)
-5. [agents/coding_agent_contract.md](../agents/coding_agent_contract.md)
-6. [agents/agent_registry.yaml](../agents/agent_registry.yaml)
-7. [workflows/development_workflow.md](../workflows/development_workflow.md)
-8. [docs/roadmap/phase_plan.md](roadmap/phase_plan.md)
-9. relevant ADRs under [docs/decisions/](decisions/)
-10. relevant schemas under [schemas/](../schemas/)
+2. [planning/README.md](../planning/README.md) for planning-state changes
+3. [AI_CONTEXT.md](../AI_CONTEXT.md)
+4. [docs/project_context.md](project_context.md)
+5. [docs/guardrails.md](guardrails.md)
+6. [agents/coding_agent_contract.md](../agents/coding_agent_contract.md)
+7. [agents/agent_registry.yaml](../agents/agent_registry.yaml)
+8. [workflows/development_workflow.md](../workflows/development_workflow.md)
+9. [docs/roadmap/phase_plan.md](roadmap/phase_plan.md)
+10. relevant ADRs under [docs/decisions/](decisions/)
+11. relevant schemas under [schemas/](../schemas/)
 
 `legacy/poc/` is excluded from the default read path and may only be consulted when a task explicitly asks for legacy context.
 
 When files disagree, apply this truth hierarchy until the repo is reconciled:
 
-1. [docs/](./)
-2. [schemas/](../schemas/)
-3. [agents/](../agents/)
-4. [workflows/](../workflows/)
+1. [planning/](../planning/)
+2. [docs/](./)
+3. [schemas/](../schemas/)
+4. [agents/](../agents/)
+5. [workflows/](../workflows/)
 
 ## Documentation Rules
 
 - Keep durable project intent and policy in Markdown under `docs/`.
+- Keep canonical planning state in task YAML under `planning/`.
 - Keep machine-consumable contracts in `schemas/` and YAML or JSON manifests.
 - Update references when paths change; do not leave stale canonical links behind.
 - Do not treat chat transcripts, scratch notes, or legacy POC docs as active authority.
@@ -52,7 +56,7 @@ When files disagree, apply this truth hierarchy until the repo is reconciled:
 
 - Prefer small, reviewable commits that separate policy, workflow, and optional hygiene changes.
 - Validate local assumptions before asking other agents or contributors to act.
-- Update affected contracts, workflows, manifests, and ADRs in the same workstream when the change is durable.
+- Update affected planning files, contracts, workflows, manifests, and ADRs in the same workstream when the change is durable.
 - When an approved MCP path exists, prefer it over broad raw access.
 
 ## Canonical Data Mutation Policy
@@ -88,4 +92,3 @@ When files disagree, apply this truth hierarchy until the repo is reconciled:
 - No autonomous or runtime schema mutation is allowed in the pilot baseline.
 - Governance exists to preserve auditability, bounded scope, and exact replay rather than maximize scenario volume.
 - `legacy/poc/` remains denied by default for agent mutation paths.
-
