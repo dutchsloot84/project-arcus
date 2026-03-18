@@ -10,22 +10,24 @@ Project Arcus is a repository operating system for human and AI-assisted deliver
 
 ## Read First
 
-1. [README.md](README.md)
-2. [AI_CONTEXT.md](AI_CONTEXT.md)
-3. [docs/project_context.md](docs/project_context.md)
-4. [docs/guardrails.md](docs/guardrails.md)
-5. [agents/coding_agent_contract.md](agents/coding_agent_contract.md)
-6. [agents/agent_registry.yaml](agents/agent_registry.yaml)
-7. [workflows/development_workflow.md](workflows/development_workflow.md)
-8. [docs/roadmap/phase_plan.md](docs/roadmap/phase_plan.md)
-9. Relevant ADRs under [docs/decisions/](docs/decisions/)
-10. Relevant schemas under [schemas/](schemas/)
+1. [planning/README.md](planning/README.md) for planning-state changes and task execution requests
+2. [README.md](README.md)
+3. [AI_CONTEXT.md](AI_CONTEXT.md)
+4. [docs/project_context.md](docs/project_context.md)
+5. [docs/guardrails.md](docs/guardrails.md)
+6. [agents/coding_agent_contract.md](agents/coding_agent_contract.md)
+7. [agents/agent_registry.yaml](agents/agent_registry.yaml)
+8. [workflows/development_workflow.md](workflows/development_workflow.md)
+9. [docs/roadmap/phase_plan.md](docs/roadmap/phase_plan.md)
+10. Relevant ADRs under [docs/decisions/](docs/decisions/)
+11. Relevant schemas under [schemas/](schemas/)
 
 Do not read or use `legacy/poc/` as context unless a task explicitly directs you there.
 
 ## Repo Map
 
 - [docs/](docs/) - architecture notes, ADRs, roadmap, SOPs, guardrails, and project context
+- [planning/](planning/) - authoritative planning control plane and generated project status
 - [agents/](agents/) - agent registry and coding contract
 - [workflows/](workflows/) - how work moves from plan to verified change
 - [schemas/](schemas/) - JSON schemas for repo manifests and structured contracts
@@ -41,6 +43,7 @@ Do not read or use `legacy/poc/` as context unless a task explicitly directs you
 ## Working Model
 
 - Plan before implementation.
+- Treat `planning/` task YAML as the source of truth for work state.
 - Make schema and contract changes before downstream implementation changes.
 - Record durable decisions in [docs/decisions/](docs/decisions/).
 - Update manifests and docs when behavior changes.
@@ -53,4 +56,4 @@ The original proof of concept has been quarantined under `legacy/poc/` so it rem
 
 ## Contribution Flow
 
-Use [workflows/development_workflow.md](workflows/development_workflow.md) as the default path for planning, implementation, verification, ADR updates, and manifest maintenance. If a change affects agent behavior, also update the agent contract and registry.
+Use [workflows/development_workflow.md](workflows/development_workflow.md) as the default path for planning, implementation, verification, ADR updates, and manifest maintenance. Planning-state changes must follow [planning/README.md](planning/README.md). If a change affects agent behavior, also update the agent contract and registry.
