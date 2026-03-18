@@ -38,3 +38,7 @@ Phase 0 is done when:
 - Expand architecture and SOP guidance for active subsystems and context ingestion.
 - Add repo-level checks for link integrity, contract drift, and workflow compliance.
 - Define the first active implementation contracts for adapters, prompts, or context packages.
+## Pre-Kickoff Readiness References
+
+- Use [docs/governance/pre_kickoff_readiness_matrix.md](../governance/pre_kickoff_readiness_matrix.md) to separate what Arcus can finalize now from what must remain provisional.
+- Use [docs/roadmap/pre_approval_workstreams.md](pre_approval_workstreams.md) to prepare non-canonical readiness work without implying approved execution scope.
